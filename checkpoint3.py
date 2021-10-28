@@ -11,32 +11,57 @@ import webbrowser
 
 def getData():
     response = requests.get("https://api.nasa.gov/planetary/apod/?api_key=qGPdOISKXp8YG2vqUX5KK9WjwVlelOIFqwWl29fx")
-    image = json.loads(response.text)
-    print("Data:", image)
-    webbrowser.open(image['url'])
+    data = json.loads(response.text)
+    return data
 
-def printKeys():
-    print("keys")
+def printKeys(data):
+    print(data.keys())
 
-def printVals():
-    print("vals")
+def printVals(data):
+    print(data.values())
 
-#example of a menu
+def openImage(data):
+    webbrowser.open(data['url'])
+
+def getPhotographer(data):
+    return(data['copyright'])
+
+def getTitle(data):
+    return(data['title'])
+
+#very basic menu
 def menu():
     print("select 1 for keys")
     print("select 2 for values")
-    print("select 3 to quit")
+    print("select 3 to open today's image of the day online")
+    print("select 4 to see who owns the image")
+    print("select 5 to see the title of the image")
+    print("select 0 to quit")
+
+def process(data):
+    while True:
+        menu()
+
+        userSelection = int(input("Please make a selection:\n"))
+        if userSelection == 1:
+            printKeys(data)
+        elif userSelection == 2:
+            printVals(data)
+        elif userSelection == 3:
+            openImage(data)
+        elif userSelection == 4:
+            print(getPhotographer(data))
+        elif userSelection == 5:
+            print(getTitle(data))
+        elif userSelection == 0:
+            exit()
+        else:
+            print("invalid selection")
 
 
 def main():
-    getData()
-
-    menu()
-    userSelection = int(input("Please make a selection:\n"))
-    if userSelection == 1:
-        printKeys()
-    elif userSelection == 2:
-        printVals()
+    data = getData()
+    process(data)
 
 if __name__ == "__main__":
     main()
