@@ -1,9 +1,10 @@
-# Final Project Checkpoint #3
-# CS 101: Checkpoint 3
-# Filename: checkpoint3.py
+# Final Project Checkpoint #4
+# CS 101: Checkpoint 4
+# Filename: checkpoint3and4.py
 #
 # Name: John (Jack) Ambery
-# Using a program to retrieve data from an API
+# Using a program to retrieve data from an API and implements a looping menu
+# This was built off the code of checkpoint 3
 
 import json
 import requests
@@ -31,12 +32,12 @@ def getTitle(data):
 
 #very basic menu
 def menu():
-    print("select 1 for keys")
-    print("select 2 for values")
-    print("select 3 to open today's image of the day online")
-    print("select 4 to see who owns the image")
-    print("select 5 to see the title of the image")
-    print("select 0 to quit")
+    print("Select 1 for keys")
+    print("Select 2 for values")
+    print("Select 3 to open today's image of the day online")
+    print("Select 4 to see who took the image")
+    print("Select 5 to see the title of the image")
+    print("Select 0 to quit")
 
 def process(data):
     while True:
@@ -57,6 +58,7 @@ def process(data):
             exit()
         else:
             print("invalid selection")
+        print("\n")
 
 
 def main():
