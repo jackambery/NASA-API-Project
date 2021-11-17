@@ -5,6 +5,7 @@
 # Name: John (Jack) Ambery
 # Using a program to retrieve data from an API and implements a looping menu
 # This was built off the code of checkpoint 3
+# This will be the last time I use the NASA API for my CS Final Project
 
 import json
 import requests
