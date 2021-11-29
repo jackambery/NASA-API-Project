@@ -31,6 +31,12 @@ def getPhotographer(data):
 def getTitle(data):
     return(data['title'])
 
+def askForDate():
+    day = input("What is the day you would like? (8th = 08, 23rd = 23)\n")
+    month = input("What is the month you would like? (March = 03)\n")
+    year = input("What is the year you would like?\n")
+    return month + "/" + month + "/" + year
+
 #very basic menu
 def menu():
     print("Select 1 for keys")
