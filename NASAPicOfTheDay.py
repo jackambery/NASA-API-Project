@@ -8,34 +8,20 @@
 
 import json
 import requests
-import webbrowser
 import config
+
+from Picture import Picture
 
 def getData():
     response = requests.get("https://api.nasa.gov/planetary/apod/?api_key=" + config.API_KEY)
     data = json.loads(response.text)
     return data
 
-def printKeys(data):
-    print(data.keys())
-
-def printVals(data):
-    print(data.values())
-
-def openImage(data):
-    webbrowser.open(data['url'])
-
-def getPhotographer(data):
-    return(data['copyright'])
-
-def getTitle(data):
-    return(data['title'])
-
 def askForDate():
     day = input("What is the day you would like? (8th = 08, 23rd = 23)\n")
     month = input("What is the month you would like? (March = 03)\n")
     year = input("What is the year you would like?\n")
-    return day + "/" + month + "/" + year
+    return year + "-" + month + "-" + day
 
 #very basic menu
 def menu():
@@ -69,8 +55,12 @@ def process(data):
 
 
 def main():
-    data = getData()
-    process(data)
+
+    photo = Picture(7, 18, 2002)
+    print(photo.getTitle())
+
+    # data = getData()
+    # process(data)
 
 if __name__ == "__main__":
     main()
