@@ -18,16 +18,16 @@ class Picture:
         self.data = json.loads(response.text)
 
     def __repr__(self):
-        pass
-
-    def printKeys(self):
-        print(self.data.keys())
-
-    def printVals(self):
-        print(self.data.values())
+        return "This is image is \"" + self.getTitle() + "\" by " + self.getPhotographer() + ". " + self.getExplanation()
 
     def openImage(self):
         webbrowser.open(self.data['url'])
+
+    def getTitle(self):
+        try:
+            return(self.data['title'])
+        except Exception as e:
+            return "No title found."
 
     def getPhotographer(self):
         try:
@@ -35,8 +35,8 @@ class Picture:
         except Exception as e:
             return "No photographer found."
 
-    def getTitle(self):
+    def getExplanation(self):
         try:
-            return(self.data['title'])
+            return(self.data['explanation'])
         except Exception as e:
-            return "No title found."
+            return "No description found."

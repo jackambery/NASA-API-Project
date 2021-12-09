@@ -18,49 +18,53 @@ def getData():
     return data
 
 def askForDate():
+    print("* NOTE: The date must be on or after June 16, 1995 *")
     day = input("What is the day you would like? (8th = 08, 23rd = 23)\n")
     month = input("What is the month you would like? (March = 03)\n")
     year = input("What is the year you would like?\n")
-    return year + "-" + month + "-" + day
+    return [month, day, year]
 
 #very basic menu
 def menu():
-    # print("Select 1 for keys")
-    # print("Select 2 for values")
-    print("Select 1 to open today's image of the day online")
-    print("Select 4 to see the details of today's image")
-    print("Select 3 to enter your own day")
+    print("Select 1 to open the image online")
+    print("Select 2 to see the title image")
+    print("Select 3 to see the name of the photographer")
+    print("Select 4 to print the full description of the photo") # title, photographer, explanation
+    #add option to write the description to a file
     print("Select 0 to quit")
 
-def process(data):
+def process():
+
+    picChoice = input("Would you like to use today's image (select '1') or select your own date? (select '2')\n")
+    
+    if picChoice == '1': # if they want to use today's image
+        photo = Picture(0,0,0)
+    else: # if they want to choose their own date
+        date = askForDate()
+        photo = Picture(date[0], date[1], date[2])
+    
     while True:
-        menu()
+
+        menu() # displays options of what to do with image
 
         userSelection = int(input("Please make a selection:\n"))
         if userSelection == 1:
-            printKeys(data)
+            photo.openImage()
         elif userSelection == 2:
-            printVals(data)
+            print(photo.getTitle())
         elif userSelection == 3:
-            openImage(data)
+            print(photo.getPhotographer())
         elif userSelection == 4:
-            print(getPhotographer(data))
-        elif userSelection == 5:
-            print(getTitle(data))
+            print(photo) # calls repr
         elif userSelection == 0:
             exit()
         else:
             print("invalid selection")
-        print("\n")
 
 
 def main():
 
-    photo = Picture(7, 18, 2002)
-    print(photo.getTitle())
-
-    # data = getData()
-    # process(data)
+    process()
 
 if __name__ == "__main__":
     main()
