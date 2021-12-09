@@ -6,16 +6,7 @@
 #
 # This project is for Introduciton to Computing Final Project
 
-import json
-import requests
-import config
-
 from Picture import Picture
-
-def getData():
-    response = requests.get("https://api.nasa.gov/planetary/apod/?api_key=" + config.API_KEY)
-    data = json.loads(response.text)
-    return data
 
 def askForDate():
     print("* NOTE: The date must be on or after June 16, 1995 *")
