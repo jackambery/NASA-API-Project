@@ -15,13 +15,13 @@ def askForDate():
     year = input("What is the year you would like?\n")
     return [month, day, year]
 
-#very basic menu
 def menu():
     print("Select 1 to open the image online")
     print("Select 2 to see the title image")
     print("Select 3 to see the name of the photographer")
-    print("Select 4 to print the full description of the photo") # title, photographer, explanation
-    #add option to write the description to a file
+    print("Select 4 to print the full description of the photo") # calls repr == title, photographer, explanation
+    print("Select 5 to append the photo's full description to the outfile")
+    print("Select 6 to clear then write the photo's full description to the outfile")
     print("Select 0 to quit")
 
 def process():
@@ -47,6 +47,10 @@ def process():
             print(photo.getPhotographer())
         elif userSelection == 4:
             print(photo) # calls repr
+        elif userSelection == 5:
+            photo.appendDescription()
+        elif userSelection == 6:
+            photo.writeDescription()
         elif userSelection == 0:
             exit()
         else:

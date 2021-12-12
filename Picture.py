@@ -7,6 +7,9 @@ import webbrowser
 class Picture:
 
     def __init__(self, month, day, year):
+
+        #sets a standard file for everything to be written to
+        self.outFile = "outfile.txt"
         
         # default day is today, triggered by date: 0/0/0
         if day == 0:
@@ -18,7 +21,7 @@ class Picture:
         self.data = json.loads(response.text)
 
     def __repr__(self):
-        return "This is image is \"" + self.getTitle() + "\" by " + self.getPhotographer() + ". " + self.getExplanation()
+        return "This is image is \"" + self.getTitle() + "\" by " + self.getPhotographer() + ".\n" + self.getExplanation()
 
     def openImage(self):
         webbrowser.open(self.data['url'])
@@ -40,3 +43,7 @@ class Picture:
             return(self.data['explanation'])
         except Exception as e:
             return "No description found."
+
+    def appendDescription(self):
+         with open(self.outFile, "a") as outfile:
+             outfile.write(self.__repr__())
