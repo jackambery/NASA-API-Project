@@ -1,3 +1,9 @@
+# Picture class for NASA Pic of the Day 
+# Name: John (Jack) Ambery
+# Filename: Picture.py
+# 
+# Create a picture object using a constructor that uses the default API
+# or a user-entered date. 
 
 import config
 import json
@@ -21,7 +27,7 @@ class Picture:
         self.data = json.loads(response.text)
 
     def __repr__(self):
-        return "This is image is \"" + self.getTitle() + "\" by " + self.getPhotographer() + ".\n" + self.getExplanation()
+        return "This is image is \"" + self.getTitle() + "\" by " + self.getPhotographer() + ".\n" + self.getExplanation() + "\n"
 
     def openImage(self):
         webbrowser.open(self.data['url'])
@@ -47,3 +53,12 @@ class Picture:
     def appendDescription(self):
          with open(self.outFile, "a") as outfile:
              outfile.write(self.__repr__())
+
+    def writeDescription(self):
+         with open(self.outFile, "w") as outfile:
+             outfile.write(self.__repr__())
+
+    def readOutFile(self):
+        with open(self.outFile, "r") as outfile:
+             print(outfile.read())
+

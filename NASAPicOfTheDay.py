@@ -22,6 +22,7 @@ def menu():
     print("Select 4 to print the full description of the photo") # calls repr == title, photographer, explanation
     print("Select 5 to append the photo's full description to the outfile")
     print("Select 6 to clear then write the photo's full description to the outfile")
+    print("Select 7 to read the out file")
     print("Select 0 to quit")
 
 def process():
@@ -51,6 +52,8 @@ def process():
             photo.appendDescription()
         elif userSelection == 6:
             photo.writeDescription()
+        elif userSelection == 7:
+            photo.readOutFile()
         elif userSelection == 0:
             exit()
         else:
@@ -58,7 +61,6 @@ def process():
 
 
 def main():
-
     process()
 
 if __name__ == "__main__":
